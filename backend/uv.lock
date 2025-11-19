@@ -38,7 +38,7 @@ name = "backend"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "fastapi", extra = ["all"] },
+    { name = "fastapi", extra = ["all", "standard"] },
     { name = "psycopg2-binary" },
     { name = "python-dotenv" },
     { name = "uvicorn" },
@@ -46,7 +46,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", extras = ["all"], specifier = ">=0.121.2" },
+    { name = "fastapi", extras = ["all", "standard"], specifier = ">=0.121.2" },
     { name = "psycopg2-binary", specifier = ">=2.9.11" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "uvicorn", specifier = ">=0.38.0" },
@@ -132,6 +132,14 @@ all = [
     { name = "python-multipart" },
     { name = "pyyaml" },
     { name = "ujson" },
+    { name = "uvicorn", extra = ["standard"] },
+]
+standard = [
+    { name = "email-validator" },
+    { name = "fastapi-cli", extra = ["standard"] },
+    { name = "httpx" },
+    { name = "jinja2" },
+    { name = "python-multipart" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
