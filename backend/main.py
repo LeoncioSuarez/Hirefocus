@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import asyncio
 try:
-
     from backend.db import database
     from backend.db.database import Base
     from backend.routers import users as users_router
@@ -14,6 +13,7 @@ except ModuleNotFoundError:
     from routers import jobs as jobs_router
     from routers import applicants as applicants_router
 from fastapi.middleware.cors import CORSMiddleware
+import logging
 
 app = FastAPI(
     title="Hirefocus API",
@@ -39,9 +39,12 @@ async def root():
 
 @app.on_event("startup")
 async def on_startup():
-    # Create tables automatically in development. Use Alembic for migrations in production.
-    async with database.engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    try:
+        async with database.engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+    except Exception as exc:
+        # Log the error but allow the app to start so you can debug/repair DB separately
+        logging.exception("No se pudo inicializar la base de datos en startup: %s", exc)
 
 
 # register routers
