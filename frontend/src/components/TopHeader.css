@@ -1,0 +1,438 @@
+/* Top Header Component Styles */
+.top-header {
+    /* Assuming grid-area is handled by parent, otherwise: width: 100%; */
+    background: var(--bg-card);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 50;
+    /* High z-index for dropdowns */
+    position: relative;
+    height: 70px;
+    /* Match grid row height */
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: var(--slate-400);
+}
+
+.header-icon-btn {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.header-icon-btn i {
+    font-size: 1.25rem;
+}
+
+.header-icon-btn:hover,
+.header-icon-btn.active {
+    background-color: var(--slate-50);
+    color: var(--primary-600);
+}
+
+/* Badge for notifications */
+.notif-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger);
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Profile Image */
+.user-img-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--slate-100);
+    cursor: pointer;
+    object-fit: cover;
+    transition: all 0.2s;
+}
+
+.user-img-nav:hover {
+    border-color: var(--primary-200);
+}
+
+/* Dropdown/Popover Container */
+.header-dropdown {
+    position: absolute;
+    top: 70px;
+    /* Header height */
+    right: 40px;
+    /* Align with padding */
+    width: 320px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    overflow: hidden;
+    animation: slideDown 0.2s ease-out;
+}
+
+.header-dropdown.profile-menu {
+    width: 200px;
+    right: 20px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--slate-50);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* List Items (Chat, Notifs) */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--slate-50);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+    background: var(--slate-50);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item.unread-item {
+    background: var(--primary-50);
+}
+
+.dropdown-item.unread-item .item-title {
+    font-weight: 700;
+}
+
+.unread-dot {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-600);
+    border-radius: 50%;
+}
+
+.item-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.item-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.item-meta {
+    font-size: 0.7rem;
+    color: var(--slate-400);
+}
+
+/* Apps Grid */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 16px;
+    gap: 16px;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.app-item:hover {
+    background: var(--slate-50);
+}
+
+.app-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-50);
+    color: var(--primary-600);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.app-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* Profile Menu Items */
+.menu-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.menu-item:hover {
+    background: var(--slate-50);
+}
+
+.menu-item.logout {
+    color: var(--danger);
+    border-top: 1px solid var(--border-color);
+}
+
+.menu-item i {
+    font-size: 1.1rem;
+    color: var(--slate-400);
+}
+
+.menu-item.logout i {
+    color: var(--danger);
+}
+
+/* EMAIL LIST STYLES */
+.email-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-100);
+    color: var(--primary-600);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-item.unread {
+    background: var(--primary-50);
+}
+
+.dropdown-item.unread .item-title {
+    font-weight: 800;
+    color: var(--primary-700);
+}
+
+/* CHAT WINDOWS (Facebook Style) */
+.chat-windows-container {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    display: flex;
+    gap: 16px;
+    z-index: 1000;
+    pointer-events: none;
+    /* Allow clicking through gaps */
+}
+
+.chat-window {
+    width: 300px;
+    height: 380px;
+    background: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.chat-header {
+    padding: 12px 16px;
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.chat-header:hover {
+    background: var(--slate-50);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.online {
+    background: var(--success);
+}
+
+.status-dot.busy {
+    background: var(--danger);
+}
+
+.status-dot.offline {
+    background: var(--slate-400);
+}
+
+.status-dot.small {
+    width: 6px;
+    height: 6px;
+}
+
+.chat-actions i {
+    margin-left: 12px;
+    color: var(--slate-400);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.chat-actions i:hover {
+    color: var(--primary-600);
+}
+
+.chat-body {
+    flex: 1;
+    padding: 16px;
+    background: var(--bg-body);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-msg {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    max-width: 80%;
+    line-height: 1.4;
+}
+
+.chat-msg.received {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    border: 1px solid var(--border-color);
+}
+
+.chat-msg.sent {
+    background: var(--primary-600);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 12px;
+    background: white;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chat-input-area input {
+    border: none;
+    background: var(--slate-50);
+    padding: 8px 12px;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.chat-input-area input:focus {
+    background: white;
+    box-shadow: 0 0 0 1px var(--primary-200);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-relative .status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    border: 1px solid white;
+}

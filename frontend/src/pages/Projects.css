@@ -1,0 +1,258 @@
+@import './dashboard/DashboardCompany.css';
+
+/* Projects Page Specific Styles */
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+}
+
+/* Search Section */
+.search-filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+/* NEW: Dedicated row for search bar and button to ensure side-by-side */
+.search-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-bar-wrapper {
+    position: relative;
+    flex-grow: 1;
+    width: 100%;
+    max-width: 800px;
+}
+
+.search-bar-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.search-input {
+    width: 100%;
+    /* Make input spread inside wrapper */
+    padding: 12px 16px 12px 48px;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    background: var(--card-white);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(2, 6, 23, 0.02);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(0, 163, 255, 0.1);
+}
+
+.search-input::placeholder {
+    color: #94a3b8;
+}
+
+/* Filters */
+.filters-wrapper {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-btn {
+    background: var(--card-white);
+    border: 1px solid #E2E8F0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-btn:hover {
+    background: #f8fafc;
+    color: var(--text-main);
+    border-color: #cbd5e1;
+}
+
+.filter-btn.active {
+    background: var(--badge-bg);
+    color: var(--accent-blue);
+    border-color: var(--badge-bg);
+}
+
+/* Projects Grid/List */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.project-card {
+    background: var(--card-white);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border-color: var(--accent-blue);
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.project-save-btn {
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-size: 1.2rem;
+}
+
+.project-save-btn:hover {
+    color: var(--accent-blue);
+}
+
+.project-save-btn.active {
+    color: var(--accent-blue);
+}
+
+.project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.project-company {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.project-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.posted-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.salary-range {
+    font-weight: 600;
+
+    color: var(--text-main);
+}
+
+/* Projects Page Responsiveness */
+
+@media (max-width: 768px) {
+    .search-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .search-bar-wrapper {
+        min-width: 100%;
+        max-width: none;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .search-filter-section {
+        gap: 12px;
+    }
+
+    .filters-wrapper {
+        overflow-x: auto;
+        padding-bottom: 8px;
+        /* Scrollbar space */
+        flex-wrap: nowrap;
+        /* Horizontal scroll for filters usually better on mobile */
+    }
+
+    .filter-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        /* Stack cards */
+    }
+}

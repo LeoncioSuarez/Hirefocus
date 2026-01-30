@@ -6,12 +6,14 @@ try:
     from backend.routers import users as users_router
     from backend.routers import jobs as jobs_router
     from backend.routers import applicants as applicants_router
+    from backend.routers import integrations as integrations_router
 except ModuleNotFoundError:
     from db import database
     from db.database import Base
     from routers import users as users_router
     from routers import jobs as jobs_router
     from routers import applicants as applicants_router
+    from routers import integrations as integrations_router
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
@@ -51,6 +53,7 @@ async def on_startup():
 app.include_router(users_router.router)
 app.include_router(jobs_router.router)
 app.include_router(applicants_router.router)
+app.include_router(integrations_router.router)
 
 
 if __name__ == "__main__":
