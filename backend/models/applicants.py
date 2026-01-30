@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, Text, DateTime
+from sqlalchemy import Column, Integer, ForeignKey, Text, DateTime, String
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
@@ -12,10 +12,11 @@ class Application(Base):
 	__tablename__ = "applications"
 
 	id = Column(Integer, primary_key=True, index=True)
-	user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+	candidate_id = Column(Integer, ForeignKey("candidates.id", ondelete="CASCADE"), nullable=False)
 	job_id = Column(Integer, ForeignKey("job_offers.id", ondelete="CASCADE"), nullable=False)
 	cv = Column(Text, nullable=True)  # store CV text or a path to file
+	stage = Column(String(50), default="Screening") # Added stage for pipeline
 	created_at = Column(DateTime(timezone=True), server_default=func.now())
 
-	user = relationship("User", back_populates="applications")
+	candidate = relationship("Candidate", back_populates="applications")
 	job = relationship("JobOffer", back_populates="applications")

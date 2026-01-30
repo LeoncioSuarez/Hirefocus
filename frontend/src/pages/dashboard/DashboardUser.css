@@ -1,0 +1,47 @@
+/* copy of DashboardCompany styles */
+@import './DashboardCompany.css';
+
+/* Customize for User Dashboard specific changes */
+
+.applications-group {
+    border: 1px solid #ffcccc;
+    /* Light red border as hint from user request 'recuadro rojo... pero un solo nombre' */
+    /* Actually user just said "un solo nombre y los recuadros" and showed a red box in the image. 
+       The image showed a red outline around "Applications". 
+       I will recreate a clean styled look. */
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background-color: var(--card-white);
+    overflow: hidden;
+    /* to clip header */
+}
+
+.applications-header {
+    background-color: #fef2f2;
+    /* Light red bg similar to image hint or just distinct */
+    color: #ef4444;
+    /* Red text */
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #fecaca;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    cursor: default;
+}
+
+/* Adjust the stats row inside the group to remove margin since group handles it */
+.applications-group .admin-stats-row {
+    margin-top: 0;
+    padding: 20px;
+    gap: 20px;
+}
+
+.applications-group .stat-card {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+}
+
+/* Recouple styling for stat card contents if needed, but they inherit from DashboardCompany.css */
