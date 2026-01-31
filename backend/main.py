@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import asyncio
 try:
-
     from backend.db import database
     from backend.db.database import Base
     from backend.routers import users as users_router
@@ -39,7 +38,6 @@ async def root():
 
 @app.on_event("startup")
 async def on_startup():
-    # Create tables automatically in development. Use Alembic for migrations in production.
     async with database.engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
