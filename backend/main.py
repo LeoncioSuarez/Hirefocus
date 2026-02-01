@@ -7,6 +7,10 @@ try:
     from backend.routers import jobs as jobs_router
     from backend.routers import applicants as applicants_router
     from backend.routers import integrations as integrations_router
+    from backend.routers import candidates as candidates_router
+    from backend.routers import events as events_router
+    from backend.routers import notes as notes_router
+    from backend.routers import documents as documents_router
 except ModuleNotFoundError:
     from db import database
     from db.database import Base
@@ -14,8 +18,13 @@ except ModuleNotFoundError:
     from routers import jobs as jobs_router
     from routers import applicants as applicants_router
     from routers import integrations as integrations_router
+    from routers import candidates as candidates_router
+    from routers import events as events_router
+    from routers import notes as notes_router
+    from routers import documents as documents_router
 from fastapi.middleware.cors import CORSMiddleware
 import logging
+from sqlmodel import SQLModel
 
 app = FastAPI(
     title="Hirefocus API",
@@ -44,6 +53,8 @@ async def on_startup():
     try:
         async with database.engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
+            # Also ensure SQLModel models are created
+            await conn.run_sync(SQLModel.metadata.create_all)
     except Exception as exc:
         # Log the error but allow the app to start so you can debug/repair DB separately
         logging.exception("No se pudo inicializar la base de datos en startup: %s", exc)
@@ -54,6 +65,10 @@ app.include_router(users_router.router)
 app.include_router(jobs_router.router)
 app.include_router(applicants_router.router)
 app.include_router(integrations_router.router)
+app.include_router(candidates_router.router)
+app.include_router(events_router.router)
+app.include_router(notes_router.router)
+app.include_router(documents_router.router)
 
 
 if __name__ == "__main__":

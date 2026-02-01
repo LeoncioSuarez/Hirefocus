@@ -13,4 +13,6 @@ dependencies = [
     "sqlalchemy>=2.0",
     "stream-chat>=4.29.0",
     "uvicorn>=0.38.0",
+    "requests>=2.31.0",
+    "sqlmodel>=0.0.8",
 ]
